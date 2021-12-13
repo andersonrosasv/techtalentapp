@@ -18,14 +18,26 @@
 </template>
 
 <script>
+import Lancamento from '../models/Lancamento';
+import {mapActions} from 'vuex';
+
 export default {
     name: "Cadastro",
     data: () => {
         return {
             nome: "",
-            planeta:"",
+            planeta: "",
             data: "",
-            descricao:"",
+            descricao: "",
+        }
+    },
+    methods: {
+        ...mapActions(["salvarLancamento"]),
+        salvar(event){
+            event.preventDefault();
+            const lancamento = new Lancamento(this.nome, this.planeta, this.data, this.descricao);
+            this.salvarLancamento(lancamento);
+            
         }
     }
 }

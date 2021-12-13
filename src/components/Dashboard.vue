@@ -9,11 +9,11 @@
         </div>
     </div>
     <div id="lista-rebeldes-rows">
-        <div class="lista-rebeldes-row">
-            <div class="rebelde-number">1</div>
-            <div>Anderson</div>
-            <div>Terra</div>
-            <div>08-08-1991</div>
+        <div class="lista-rebeldes-row" v-for="lancamento in todosLancamentos" v-bind:key="lancamento.id">
+            <div class="rebelde-number">{{lancamento.id}}</div>
+            <div>{{lancamento.nome}}</div>
+            <div>{{lancamento.planeta}}</div>
+            <div>{{lancamento.data}}</div>
             <div>
                 <select name="" id="">
                     <option value="">Filtrar</option>
@@ -25,9 +25,14 @@
 </template>
 
 <script>
+
+import { mapGetters } from 'vuex';
+
 export default {
     name: "Dashboard",
+    computed: mapGetters(["todosLancamentos"]),
 }
+
 </script>
 
 <style scoped>

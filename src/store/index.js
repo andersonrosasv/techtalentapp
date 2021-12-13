@@ -1,12 +1,10 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
+import moduloLancamentos from './modules/lancamentos';
 
-export default createStore({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+const store = createStore({
+    modules: {
+        moduloLancamentos,
+    }
+});
+
+export default store;
