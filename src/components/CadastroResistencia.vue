@@ -50,13 +50,13 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:tomato;
+    background-color:#fff;
 }
 
 #formularioCadastro{
     min-height: 400px;
     width: 300px;
-    background-color: linen;
+    background-color: rgb(212, 151, 89);
     box-sizing: border-box;
     padding: 32px;
     border-radius: 10px;

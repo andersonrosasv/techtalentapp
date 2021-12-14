@@ -15,9 +15,6 @@
             <div>{{lancamento.planeta}}</div>
             <div>{{lancamento.data}}</div>
             <div>
-                <select name="" id="">
-                    <option value="">Filtrar</option>
-                </select>
                 <button class="delete-btn">Remover</button>
             </div>
         </div>
