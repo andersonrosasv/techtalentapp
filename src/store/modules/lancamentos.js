@@ -32,11 +32,16 @@ const moduloLancamentos = {
     actions: {
         salvarLancamento: ({ commit }, lancamento) => {
             commit("adicionarLancamento", lancamento);
+        },
+        excluirLancamento: ({commit}, id) => {
+            commit('removerLancamento', id);
         }
     },
     mutations: {
         adicionarLancamento: (state, lancamento) => state.lancamentos.unshift(lancamento),
-    },
+    
+        removerLancamento: (state, id) => state.lancamentos = state.lancamentos.filter(lancamento => lancamento.id !== id)
+    },    
 }
 
 export default moduloLancamentos;

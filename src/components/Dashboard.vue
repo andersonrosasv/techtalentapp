@@ -7,7 +7,7 @@
             <div>Nome:</div>
             <div>Planeta:</div>
             <div>Nascimento:</div>
-            <div>Filtrar</div>
+            <div></div>
         </div>
     </div>
     <div id="lista-rebeldes-rows">
@@ -17,14 +17,16 @@
             <div>{{lancamento.planeta}}</div>
             <div>{{lancamento.data}}</div>
             <div>
-                <button class="delete-btn">Remover</button>
+                <button class="delete-btn" @click="excluirLancamento(lancamento.id)">Remover</button>
             </div>
-        </div>
+        </div>        
     </div>
+
 </template>
 
 <script>
 
+import { mapActions } from 'vuex'
 import { mapGetters } from 'vuex';
 
 export default {
@@ -32,14 +34,16 @@ export default {
     data(){
         return {
             searchedName:"",
+            searchedPlanet: "",
         }
     },
+    methods: mapActions(["excluirLancamento"]),
     computed: {
-        ...mapGetters(["todosLancamentos", "filteredNames"]),
-        filtered() {
-        return this.filteredNames(this.searchedName);
-    },
+        ...mapGetters(["todosLancamentos", "filteredNames", "filteredPlanets"]),
+        filtered(){
+        return this.filteredNames(this.searchedName)
         }
+    },
 }
 
 </script>

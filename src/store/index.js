@@ -7,8 +7,4 @@ const store = createStore({
     }
 });
 
-export function filterNames(){
-    return this.state.lancamentos.filter(lancamento =>lancamento.nome.includes(this.search));
-}
-
 export default store;

@@ -37,7 +37,13 @@ export default {
             event.preventDefault();
             const lancamento = new Lancamento(this.nome, this.planeta, this.data, this.descricao);
             this.salvarLancamento(lancamento);
-            
+            this.limparFormulario();
+        },
+        limparFormulario(){
+            this.nome="";
+            this.planeta="";
+            this.data="";
+            this.descricao="";
         }
     }
 }
