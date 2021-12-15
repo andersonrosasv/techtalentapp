@@ -1,5 +1,7 @@
 <template>
     <div id="lista-rebeldes">
+        <input class="form-control container mb-3" placeholder="Filtre por nome" v-model="searchedName"/>
+        <input class="form-control container mb-3" placeholder="Filtre por planeta" v-model="searchedPlanet"/>
         <div id="lista-rebeldes-heading">
             <div class="rebelde-id">#:</div>
             <div>Nome:</div>
@@ -9,7 +11,7 @@
         </div>
     </div>
     <div id="lista-rebeldes-rows">
-        <div class="lista-rebeldes-row" v-for="lancamento in todosLancamentos" v-bind:key="lancamento.id">
+        <div class="lista-rebeldes-row" v-for="lancamento in filtered" v-bind:key="lancamento.id">
             <div class="rebelde-number">{{lancamento.id}}</div>
             <div>{{lancamento.nome}}</div>
             <div>{{lancamento.planeta}}</div>
@@ -27,7 +29,17 @@ import { mapGetters } from 'vuex';
 
 export default {
     name: "Dashboard",
-    computed: mapGetters(["todosLancamentos"]),
+    data(){
+        return {
+            searchedName:"",
+        }
+    },
+    computed: {
+        ...mapGetters(["todosLancamentos", "filteredNames"]),
+        filtered() {
+        return this.filteredNames(this.searchedName);
+    },
+        }
 }
 
 </script>
