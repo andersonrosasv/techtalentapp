@@ -1,7 +1,7 @@
 <template>
     <div id="lista-rebeldes">
-        <input class="form-control container mb-3" placeholder="Filtre por nome" v-model="searchedName"/>
-        <input class="form-control container mb-3" placeholder="Filtre por planeta" v-model="searchedPlanet"/>
+        <input class="form-control container mb-3" placeholder="filtrar por Nome ou Planeta" v-model="searchText"/>
+
         <div id="lista-rebeldes-heading">
             <div class="rebelde-id">#:</div>
             <div>Nome:</div>
@@ -13,9 +13,9 @@
     <div id="lista-rebeldes-rows">
         <div class="lista-rebeldes-row" v-for="lancamento in filtered" v-bind:key="lancamento.id">
             <div class="rebelde-number">{{lancamento.id}}</div>
-            <div>{{lancamento.nome}}</div>
-            <div>{{lancamento.planeta}}</div>
-            <div>{{lancamento.data}}</div>
+            <div>{{lancamento.name}}</div>
+            <div>{{lancamento.planet}}</div>
+            <div>{{lancamento.birthDate}}</div>
             <div>
                 <button class="delete-btn" @click="excluirLancamento(lancamento.id)">Remover</button>
             </div>
@@ -33,16 +33,16 @@ export default {
     name: "Dashboard",
     data(){
         return {
-            searchedName:"",
-            searchedPlanet: "",
+        
+            searchText: "",
         }
     },
     methods: mapActions(["excluirLancamento"]),
     computed: {
-        ...mapGetters(["todosLancamentos", "filteredNames", "filteredPlanets"]),
+        ...mapGetters(["todosLancamentos", "filteredText"]),
         filtered(){
-        return this.filteredNames(this.searchedName)
-        }
+        return this.filteredText(this.searchText)
+        }       
     },
 }
 

@@ -4,28 +4,28 @@ const moduloLancamentos = {
         lancamentos : [
             {
                 id: Math.random().toString(36).substr(2,5),
-                nome: "Anderson",
-                planeta: "Saturno",
-                data: "08-08-1991",
-                descricao: "destruir a galaxia",
+                name: "Anderson",
+                planet: "Saturno",
+                birthDate: "08-08-1991",
+                description: "destruir a galaxia",
             },
             {
                 id: Math.random().toString(36).substr(2,5),
-                nome: "Anakin",
-                planeta: "Tatooine",
-                data: "18-11-1977",
-                descricao: "ser o lord sith",
+                name: "Anakin",
+                planet: "Tatooine",
+                birthDate: "18-11-1977",
+                description: "ser o lord sith",
             }
         ]
     },
     getters: {
         todosLancamentos: state => state.lancamentos,
-        filteredNames: state => (target) => {
+
+        filteredText: state => (target) => {
             return state.lancamentos.filter(lancamento =>
-                lancamento.nome.toLowerCase().startsWith(target.toLowerCase()))},
-        filteredPlanets: state => (target) => {
-            return state.lancamentos.filter(lancamento =>
-                lancamento.planeta.toLowerCase().startsWith(target.toLowerCase()))},
+                lancamento.name.toLowerCase().startsWith(target.toLowerCase()) ||
+                lancamento.planet.toLowerCase().startsWith(target.toLowerCase()))
+        },
 
     },
     

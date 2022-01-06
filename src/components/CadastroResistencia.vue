@@ -2,14 +2,14 @@
         <div id="painelCadastro">
         <div id="formularioCadastro">
             <form @submit="salvar">
-                <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" required v-model="nome"/>
-                <label for="planeta">Planeta</label>
-                <input type="text" name="planeta" id="planeta" required v-model="planeta"/>
-                <label for="data">Data de Nascimento</label>
-                <input type="date" name="data" id="data" required v-model="data" />
-                <label for="descricao">Qual sua motivação para entrar na aliança?</label>
-                <textarea rows="" cols="" name="descricao" id="descricao" required v-model="descricao"></textarea>
+                <label for="name">Nome</label>
+                <input type="text" name="name" id="name" required v-model="name"/>
+                <label for="planet">Planeta</label>
+                <input type="text" name="planet" id="planet" required v-model="planet"/>
+                <label for="birthDate">Data de Nascimento</label>
+                <input type="date" name="birthDate" id="birthDate" required v-model="birthDate" />
+                <label for="description">Qual sua motivação para entrar na aliança?</label>
+                <textarea rows="" cols="" name="description" id="description" required v-model="description"></textarea>
 
                 <button>Cadastrar</button>
             </form>            
@@ -25,25 +25,25 @@ export default {
     name: "Cadastro",
     data: () => {
         return {
-            nome: "",
-            planeta: "",
-            data: "",
-            descricao: "",
+            name: "",
+            planet: "",
+            birthDate: "",
+            description: "",
         }
     },
     methods: {
         ...mapActions(["salvarLancamento"]),
         salvar(event){
             event.preventDefault();
-            const lancamento = new Lancamento(this.nome, this.planeta, this.data, this.descricao);
+            const lancamento = new Lancamento(this.name, this.planet, this.birthDate, this.description);
             this.salvarLancamento(lancamento);
             this.limparFormulario();
         },
         limparFormulario(){
-            this.nome="";
-            this.planeta="";
-            this.data="";
-            this.descricao="";
+            this.name="";
+            this.planet="";
+            this.birthDate="";
+            this.description="";
         }
     }
 }

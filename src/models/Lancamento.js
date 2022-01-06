@@ -1,10 +1,10 @@
 export default class Lancamento {
 
-    constructor(nome, planeta, data, descricao){
+    constructor(name, planet, birthDate, description){
         this.id = Math.random().toString(36).substr(2,5);
-        this.nome = nome;
-        this.planeta = planeta;
-        this.data = data;
-        this.descricao = descricao;
+        this.name = name;
+        this.planet = planet;
+        this.birthDate = birthDate;
+        this.description = description;
     }
 }
